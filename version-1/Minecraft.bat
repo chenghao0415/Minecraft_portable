@@ -12,7 +12,7 @@ mode con lines=5 cols=25
 ::link
 
 set server_host=github.com
-set server_url=https://raw.githubusercontent.com/chenghao0415/Auto_bat_updata/main
+set server_url=https://raw.githubusercontent.com/chenghao0415/Minecraft-portable/main
 
 del /f /q %cd%\updata.bat
 cls
