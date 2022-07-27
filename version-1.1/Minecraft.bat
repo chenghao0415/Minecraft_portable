@@ -2,6 +2,8 @@
 
 if not exist %appdata%\minecraft_portable_config.txt (
 	echo make by chenghao>>%appdata%\minecraft_portable_config.txt
+	echo %date% %time%>>%appdata%\minecraft_portable_config.txt
+	echo.>>%appdata%\minecraft_portable_config.txt
 	echo autoUpdata=true>>%appdata%\minecraft_portable_config.txt
 	echo root=%cd%\Minecraft>>%appdata%\minecraft_portable_config.txt
 	echo serverHost=github.com>>%appdata%\minecraft_portable_config.txt
