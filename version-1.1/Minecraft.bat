@@ -36,7 +36,7 @@ FOR /F "skip=1 tokens=1,2 delims==" %%i in (%appdata%\minecraft_portable_config.
 
 if "%auto_updata%"=="false" goto main
 
-set version=version-1
+set version=version-1.1
 set file_name=Minecraft.bat
 
 title check updata
