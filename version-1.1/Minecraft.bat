@@ -1,5 +1,8 @@
 @echo off
 
+set version=version-1.1
+set file_name=Minecraft.bat
+
 if not exist %appdata%\minecraft_portable_config.txt (
 	echo make by chenghao>>%appdata%\minecraft_portable_config.txt
 	echo %date% %time%>>%appdata%\minecraft_portable_config.txt
@@ -30,9 +33,6 @@ FOR /F "tokens=2 delims=/" %%i in ("%server_url%") do set server_host=%%i
 FOR /F "tokens=2 delims=/" %%i in ("%download%") do set download_host=%%i
 
 if "%auto_updata%"=="false" goto main
-
-set version=version-1.1
-set file_name=Minecraft.bat
 
 title check updata
 mode con lines=5 cols=25
@@ -74,6 +74,7 @@ if %new_version%==%version% (
 	echo cls>>%cd%\updata.bat
 	echo start /d %cd% %cd%\%file_name%>>%cd%\updata.bat
 	echo exit>>%cd%\updata.bat
+	attrib +h %cd%\updata.bat
 	start /d %cd% /min /i %cd%\updata.bat
 	exit
 )
