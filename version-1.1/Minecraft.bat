@@ -8,7 +8,7 @@ if not exist %appdata%\minecraft_portable_config.txt (
 	echo %date% %time%>>%appdata%\minecraft_portable_config.txt
 	echo.>>%appdata%\minecraft_portable_config.txt
 	echo autoUpdata=true>>%appdata%\minecraft_portable_config.txt
-	echo root=%cd%\Minecraft>>%appdata%\minecraft_portable_config.txt
+	echo root=@portable>>%appdata%\minecraft_portable_config.txt
 	echo serverUrl=https://raw.githubusercontent.com/chenghao0415/Minecraft_portable/main>>%appdata%\minecraft_portable_config.txt
 	echo download=https://launcher.mojang.com/download/Minecraft.exe>>%appdata%\minecraft_portable_config.txt
 )
@@ -31,6 +31,7 @@ FOR /F "skip=1 tokens=1,2 delims==" %%i in (%appdata%\minecraft_portable_config.
 
 FOR /F "tokens=2 delims=/" %%i in ("%server_url%") do set server_host=%%i
 FOR /F "tokens=2 delims=/" %%i in ("%download%") do set download_host=%%i
+if %root%=="@portable" set root=%cd%\Minecraft
 
 if "%auto_updata%"=="false" goto main
 
@@ -108,6 +109,8 @@ if not exist %root%\app\Minecraft.exe (
 ) else (
 	echo Start Minecraft
 	echo [Info:    %date% %time%] Minecraft start!>>%root%\app\log.txt
+	echo [Data:    %date% %time%] Computer name:%computername%>>%root%\app\log.txt
+	echo [Data:    %date% %time%] User name:%username%>>%root%\app\log.txt
 	"%root%\app\Minecraft.exe" --workDir %root%\data
 )
 
