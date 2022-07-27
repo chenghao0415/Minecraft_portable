@@ -6,35 +6,28 @@ if not exist %appdata%\minecraft_portable_config.txt (
 	echo.>>%appdata%\minecraft_portable_config.txt
 	echo autoUpdata=true>>%appdata%\minecraft_portable_config.txt
 	echo root=%cd%\Minecraft>>%appdata%\minecraft_portable_config.txt
-	echo serverHost=github.com>>%appdata%\minecraft_portable_config.txt
 	echo serverUrl=https://raw.githubusercontent.com/chenghao0415/Minecraft_portable/main>>%appdata%\minecraft_portable_config.txt
 	echo download=https://launcher.mojang.com/download/Minecraft.exe>>%appdata%\minecraft_portable_config.txt
-	echo downloadHost=launcher.mojang.com>>%appdata%\minecraft_portable_config.txt
 )
 
 FOR /F "skip=1 tokens=1,2 delims==" %%i in (%appdata%\minecraft_portable_config.txt) do if "root"=="%%i" (
 	set root="%%j"
 ) else (
-	if "serverHost"=="%%i" (
-		set server_host=%%j
+	if "serverUrl"=="%%i" (
+		set server_url=%%j
 	) else (
-		if "serverUrl"=="%%i" (
-			set server_url=%%j
+		if "download"=="%%i" (
+			set download=%%j
 		) else (
-			if "download"=="%%i" (
-				set download=%%j
-			) else (
-				if "downloadHost"=="%%i" (
-					set download_host=%%j
-				) else (
-					if "autoUpdata"=="%%i" (
-						set auto_updata=%%j
-					)
-				)
+			if "autoUpdata"=="%%i" (
+				set auto_updata=%%j
 			)
 		)
 	)
 )
+
+FOR /F "tokens=2 delims=/" %%i in ("%server_url%") do set server_host=%%i
+FOR /F "tokens=2 delims=/" %%i in ("%download%") do set download_host=%%i
 
 if "%auto_updata%"=="false" goto main
 
