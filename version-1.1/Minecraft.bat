@@ -3,6 +3,13 @@
 set version=version-1.1
 set file_name=%~n0.bat
 
+set root=@portable
+set server_url=https://raw.githubusercontent.com/chenghao0415/Minecraft_portable/main
+set download=https://launcher.mojang.com/download/Minecraft.exe
+set auto_updata=true
+
+goto no_config
+
 if not exist "%appdata%\minecraft_portable_config.txt" (
 	echo make by chenghao>>"%appdata%\minecraft_portable_config.txt"
 	echo %date% %time%>>"%appdata%\minecraft_portable_config.txt"
@@ -28,6 +35,8 @@ FOR /F "skip=1 tokens=1,2 delims==" %%i in (%appdata%\minecraft_portable_config.
 		)
 	)
 )
+
+:no_config
 
 FOR /F "tokens=2 delims=/" %%i in ("%server_url%") do set server_host=%%i
 FOR /F "tokens=2 delims=/" %%i in ("%download%") do set download_host=%%i
