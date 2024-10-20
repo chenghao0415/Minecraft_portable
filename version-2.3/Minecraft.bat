@@ -11,7 +11,7 @@ set download=https://launcher.mojang.com/download/Minecraft.exe
 
 ::end_setting
 
-set version=version-2.2
+set version=version-2.3
 set file_name=%~nx0
 set rand=%random%
 
