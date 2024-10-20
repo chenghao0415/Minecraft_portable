@@ -4,7 +4,7 @@
 
 set auto_updata=true
 set check_link=true
-set server_url=https://raw.githubusercontent.com/chenghao0415/Minecraft_portable/main
+set server_url=https://raw.githubusercontent.com/chenghao0415/Minecraft_portable/refs/heads/main
 set original_name=Minecraft.bat
 
 set download=https://launcher.mojang.com/download/Minecraft.exe
